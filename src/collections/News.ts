@@ -1,11 +1,13 @@
+import { isSuperAdmin } from '@/lib/access'
 import type { CollectionConfig } from 'payload'
+
+
 
 export const News: CollectionConfig = {
   slug: 'news',
   admin: {
-    useAsTitle: 'title',
-  },
-  fields: [
+    useAsTitle: 'title'
+  }, fields: [
     {
       name: 'title',
       type: 'text',
@@ -33,14 +35,16 @@ export const News: CollectionConfig = {
     },
     {
       name: 'author',
-      label: 'Author',
+      label: 'Penulis',
       type: 'relationship',
       relationTo: 'users',
       required: true,
       admin: {
-        position: 'sidebar',
-        description: 'Pilih penulis berita',
+        hidden: true
       },
+      access: {
+        update: ({ req }) => isSuperAdmin(req.user)
+      }
     },
     {
       name: 'status',
@@ -60,6 +64,7 @@ export const News: CollectionConfig = {
       admin: {
         readOnly: true, // Tidak bisa diubah manual di admin panel
         condition: (data) => data?.status === 'published', // Hanya tampil jika published
+        hidden: true
       },
     },
     {
@@ -68,14 +73,14 @@ export const News: CollectionConfig = {
       required: false,
       unique: true,
       admin: {
-        hidden: true, // Sembunyikan slug dari form admin
+        hidden: true,
       },
-    },
+    }
+
   ],
   hooks: {
     beforeValidate: [
       ({ data, req }) => {
-        // Jika data ada, lakukan pengecekan status
         if (data) {
           // Slug otomatis dari judul
           if (data.title && (!data.slug || data.slug === '')) {
@@ -92,7 +97,7 @@ export const News: CollectionConfig = {
           if (data.status === 'draft') {
             data.publishedAt = undefined
           }
-          // Set author otomatis jika belum ada
+          // Set author otomatis dari user yang login
           if (!data.author && req?.user?.id) {
             data.author = req.user.id
           }

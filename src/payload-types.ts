@@ -121,6 +121,8 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
+  name: string;
+  bio?: string | null;
   roles: 'super_admin' | 'user';
   updatedAt: string;
   createdAt: string;
@@ -176,13 +178,14 @@ export interface News {
     };
     [k: string]: unknown;
   };
-  /**
-   * Pilih penulis berita
-   */
   author: string | User;
   status: 'draft' | 'published';
   publishedAt?: string | null;
   slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -252,6 +255,8 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  bio?: T;
   roles?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -294,6 +299,12 @@ export interface NewsSelect<T extends boolean = true> {
   status?: T;
   publishedAt?: T;
   slug?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

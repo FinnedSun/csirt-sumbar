@@ -25,7 +25,7 @@ const run = async () => {
       data: {
         email: superAdminEmail,
         password: superAdminPassword,
-        roles: ['super_admin'],
+        roles: 'super_admin',
       },
     })
     console.log('Super admin berhasil dibuat!')

@@ -5,7 +5,7 @@ import type { CollectionConfig } from 'payload'
 export const Users: CollectionConfig = {
   slug: 'users',
   admin: {
-    useAsTitle: 'email',
+    useAsTitle: 'name',
   },
   auth: true,
   access: {
@@ -22,6 +22,17 @@ export const Users: CollectionConfig = {
     },
   },
   fields: [
+    {
+      name: 'name',
+      type: 'text',
+      required: true,
+      label: 'Nama Penulis'
+    },
+    {
+      name: 'bio',
+      type: 'textarea',
+      label: 'Bio'
+    },
     {
       name: 'roles',
       type: 'select',
