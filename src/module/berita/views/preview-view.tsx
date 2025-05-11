@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { toast } from "sonner";
 import { BeritaSlugStandalone } from "./berita-slug-standalone";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 interface Props {
   beritaId: string;
@@ -36,8 +37,7 @@ export const PreviewView = ({ beritaId }: Props) => {
       </div>
 
       <BeritaSlugStandalone
-        title={data?.title || ''}
-        content={data?.content || ''}
+        title={data.title}
         image={{
           url: data.image?.url || '',
           alt: data?.image?.alt || ''
@@ -45,7 +45,9 @@ export const PreviewView = ({ beritaId }: Props) => {
         publishedAt={data?.publishedAt || ''}
         author={typeof data.author === 'string' ? data.author : data.author?.name}
         status={data?.status || 'draft'}
-      />
+      >
+        <RichText data={data.content} />
+      </BeritaSlugStandalone>
     </div>
   );
 };

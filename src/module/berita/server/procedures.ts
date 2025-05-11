@@ -3,7 +3,6 @@
 import { baseProcedure, createTRPCRouter, protectedProcedure } from "@/trpc/init";
 
 import { z } from 'zod'
-import payload from 'payload'
 import { TRPCError } from "@trpc/server";
 import { DEFAULT_LIMIT } from "@/constants";
 import { Media } from "@/payload-types";

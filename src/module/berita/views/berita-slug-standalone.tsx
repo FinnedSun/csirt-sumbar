@@ -1,13 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import { RichText } from "@payloadcms/richtext-lexical/react"
 import { Button } from "@/components/ui/button"
 import { Link } from "lucide-react"
 
 interface BeritaSlugStandaloneProps {
   title: string
-  content: any
+  children: React.ReactNode
   image?: {
     url: string
     alt: string
@@ -19,7 +18,7 @@ interface BeritaSlugStandaloneProps {
 
 export const BeritaSlugStandalone = ({
   title,
-  content,
+  children,
   image,
   publishedAt,
   author,
@@ -60,7 +59,9 @@ export const BeritaSlugStandalone = ({
           </p>
         </div>
 
-        <RichText data={content} />
+        <>
+          {children}
+        </>
       </article>
     </div>
   )

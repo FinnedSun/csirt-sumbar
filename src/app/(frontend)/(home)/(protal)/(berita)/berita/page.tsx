@@ -2,7 +2,7 @@ import { DEFAULT_LIMIT } from '@/constants';
 import { BeritaView } from '@/module/berita/views/berita-view';
 import { getQueryClient, HydrateClient, trpc } from '@/trpc/server'
 
-import React from 'react'
+export const dynamic = "force-dynamic"; // defaults to force-static
 
 const BeritaPage = () => {
 

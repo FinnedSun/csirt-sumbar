@@ -1,24 +1,9 @@
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/card"
 import { useTRPC } from "@/trpc/client"
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query"
 import Image from "next/image"
 
-interface Props {
-  publications: {
-    title: string
-    description: string
-    href: string
-    image: string
-    cover: string
-    date: Date
-    author: string
-  }[]
-}
-
-export const Publication = ({
-  publications,
-}: Props) => {
+export const Publication = () => {
 
   const trpc = useTRPC();
   const {
