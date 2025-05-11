@@ -3,14 +3,11 @@ import { Card, CardContent, CardDescription, CardTitle } from "@/components/ui/c
 import { DEFAULT_LIMIT } from "@/constants";
 import { useTRPC } from "@/trpc/client";
 import { useSuspenseInfiniteQuery } from "@tanstack/react-query";
+import { InboxIcon } from "lucide-react";
 import Image from "next/image"
 
-interface Props {
 
-}
-
-export const BeritaList = ({
-}: Props) => {
+export const BeritaList = () => {
 
   const trpc = useTRPC();
   const {
@@ -32,6 +29,17 @@ export const BeritaList = ({
 
   if (error) {
     return <div>Error: {error.message}</div>;
+  }
+
+  if (data.pages?.[0]?.docs.length === 0) {
+    return (
+      <div className='flex items-center justify-center min-h-[40vh] w-full'>
+        <div className='border border-black border-dashed flex flex-col items-center justify-center p-8 gap-y-4 bg-white rounded-lg'>
+          <InboxIcon />
+          <p className='text-base font-medium'>No products found</p>
+        </div>
+      </div>
+    )
   }
 
   // publication.date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })

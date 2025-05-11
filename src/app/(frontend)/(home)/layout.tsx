@@ -18,7 +18,7 @@ const BerandaLayout = ({
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      <div className="flex-1">
+      <div className="flex-1 mt-20">
         <div className="max-w-screen-xl mx-auto w-full">
           {children}
         </div>
