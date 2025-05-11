@@ -77,23 +77,6 @@ export const News: CollectionConfig = {
         hidden: true,
       },
     },
-    {
-      name: 'meta',
-      label: 'Meta',
-      type: 'group',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          label: 'Judul',
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          label: 'Deskripsi',
-        },
-      ]
-    }
 
   ],
   hooks: {

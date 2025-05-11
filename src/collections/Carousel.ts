@@ -1,9 +1,16 @@
+import { isSuperAdmin } from '@/lib/access'
 import type { CollectionConfig } from 'payload'
 
 export const Carousel: CollectionConfig = {
   slug: 'carousel',
   admin: {
     useAsTitle: 'title',
+  },
+  access: {
+    create: ({ req }) => isSuperAdmin(req.user),
+    update: ({ req }) => isSuperAdmin(req.user),
+    delete: ({ req }) => isSuperAdmin(req.user),
+    read: ({ req }) => isSuperAdmin(req.user),
   },
   fields: [
     {

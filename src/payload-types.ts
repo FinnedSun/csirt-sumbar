@@ -150,6 +150,7 @@ export interface User {
 export interface Media {
   id: string;
   alt: string;
+  user?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -190,10 +191,6 @@ export interface News {
   status: 'draft' | 'published';
   publishedAt?: string | null;
   slug?: string | null;
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-  };
   updatedAt: string;
   createdAt: string;
 }
@@ -370,6 +367,7 @@ export interface UsersSelect<T extends boolean = true> {
  */
 export interface MediaSelect<T extends boolean = true> {
   alt?: T;
+  user?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -395,12 +393,6 @@ export interface NewsSelect<T extends boolean = true> {
   status?: T;
   publishedAt?: T;
   slug?: T;
-  meta?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
 }

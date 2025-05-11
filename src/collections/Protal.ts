@@ -10,7 +10,7 @@ export const Protal: CollectionConfig = {
     create: ({ req }) => isSuperAdmin(req.user),
     update: ({ req }) => isSuperAdmin(req.user),
     delete: ({ req }) => isSuperAdmin(req.user),
-    read: () => true // Semua user bisa membaca
+    read: ({ req }) => isSuperAdmin(req.user),
   },
   fields: [
     {
