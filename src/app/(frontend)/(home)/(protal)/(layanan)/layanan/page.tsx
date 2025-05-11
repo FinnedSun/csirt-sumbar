@@ -1,5 +1,6 @@
 import LayananView from '@/module/protal/views/layanan-view'
-import { getQueryClient, HydrateClient, trpc } from '@/trpc/server';
+import { getQueryClient, trpc } from '@/trpc/server';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import React from 'react'
 
 const ProfilePage = () => {
@@ -10,9 +11,9 @@ const ProfilePage = () => {
   }));
 
   return (
-    <HydrateClient>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <LayananView />
-    </HydrateClient>
+    </HydrationBoundary>
   )
 }
 

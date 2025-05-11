@@ -8,6 +8,48 @@ import { DEFAULT_LIMIT } from "@/constants";
 import { Media } from "@/payload-types";
 
 export const newsRouter = createTRPCRouter({
+  getCarousel: baseProcedure
+    .input(
+      z.object({
+        cursor: z.number().default(1),
+        limit: z.number().default(DEFAULT_LIMIT),
+      }))
+    .query(async ({ input, ctx }) => {
+      const result = await ctx.db.find({
+        collection: "carousel",
+        limit: input.limit,
+        page: input.cursor,
+        where: {
+          active: { equals: true }
+        },
+        sort: "order",
+      });
+
+      const doc = result.docs[0];
+
+      if (!doc) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Data carousel tidak ditemukan"
+        });
+      }
+
+      if (!result) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Data carousel tidak ditemukan"
+        });
+      }
+
+      return {
+        ...result,
+        docs: result.docs.map((doc) => ({
+          ...doc,
+          image: doc.image as Media | null,
+        }))
+      };
+
+    }),
   getMany: baseProcedure
     .input(
       z.object({
@@ -82,4 +124,5 @@ export const newsRouter = createTRPCRouter({
 
       return { ...doc, image: doc.image as Media | null };
     }),
+
 })

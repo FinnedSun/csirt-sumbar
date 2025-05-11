@@ -36,13 +36,14 @@ export const BeritaList = () => {
       <div className='flex items-center justify-center min-h-[40vh] w-full'>
         <div className='border border-black border-dashed flex flex-col items-center justify-center p-8 gap-y-4 bg-white rounded-lg'>
           <InboxIcon />
-          <p className='text-base font-medium'>No products found</p>
+          <p className='text-base font-medium'>
+            Belum ada berita
+          </p>
         </div>
       </div>
     )
   }
 
-  // publication.date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })
   return (
     <>
       <div className="m-1 bg-transparent">

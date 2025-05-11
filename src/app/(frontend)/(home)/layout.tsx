@@ -1,5 +1,8 @@
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
+import {
+  Toaster
+} from "sonner"
 
 interface Props {
   children: React.ReactNode;
@@ -21,6 +24,8 @@ const BerandaLayout = ({
       <div className="flex-1 mt-20">
         <div className="max-w-screen-xl mx-auto w-full">
           {children}
+          <Toaster />
+
         </div>
       </div>
       <Footer about={about} />

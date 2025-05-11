@@ -33,7 +33,7 @@ const NavbarItem = ({
       asChild
       variant={"outline"}
       className={cn(
-        "bg-transparent hover:bg-transparent rounded-full hover:border-primary border-transparent px-3.5 text-lg",
+        "bg-transparent hover:bg-transparent rounded-full hover:border-primary border-transparent px-3.5 text-lg shadow-none",
         isActive && "bg-black text-white hover:bg-black hover:text-white"
       )}
     >
@@ -70,7 +70,7 @@ const navbarItems = [
     children: "Event"
   },
   {
-    href: "/hubungi-kami",
+    href: "/contact",
     children: "Hubungi Kami"
   },
 ]
@@ -106,7 +106,7 @@ export const Navbar = () => {
         </span>
       </Link>
 
-      <div className="items-center gap-4 hidden xl:flex">
+      <div className="items-center gap-4 hidden xl:flex mr-5">
         {navbarItems.map((item) => (
           <NavbarItem
             key={item.href}
