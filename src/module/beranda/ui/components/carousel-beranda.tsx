@@ -23,10 +23,6 @@ export const CarouselBeranda = ({
 
   const {
     data,
-    hasNextPage,
-    isFetchingNextPage,
-    fetchNextPage,
-    error
   } = useSuspenseInfiniteQuery(trpc.berita.getCarousel.infiniteQueryOptions({
     limit: 3,
   },
