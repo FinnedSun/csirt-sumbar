@@ -42,7 +42,6 @@ export const BeritaList = () => {
     )
   }
 
-  // publication.date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })
   return (
     <>
       <div className="m-1 bg-transparent">
@@ -72,13 +71,10 @@ export const BeritaList = () => {
                       : 'Tanggal tidak tersedia'}
                   </p>
                   <p className="text-sm text-gray-500">
-                    {typeof berita.author === 'string' ?
-                      // If author is just an ID, you'll need to fetch the user data
-                      // Add a trpc query to get user details by ID
-                      berita.author
-                      :
-                      // If author is populated, show name/email
-                      berita.author?.name}
+                    {typeof berita.author === 'string'
+                      ? berita.author
+                      : berita.author?.name
+                    }
                   </p>
                 </div>
                 <div className="flex flex-col gap-2">

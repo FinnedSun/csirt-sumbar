@@ -4,22 +4,25 @@ import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { Suspense } from "react";
 
 interface Props {
-  params: { slug: string };
+  params: Promise<{
+    slug: string
+  }>;
 }
 
 export default async function Page({ params }: Props) {
+  const { slug } = await params;
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery(
     trpc.berita.getOneDraft.queryOptions({
-      slug: params.slug
+      slug
     })
   );
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Suspense fallback={<div>Memuat preview...</div>}>
-        <PreviewView beritaId={params.slug} />
+        <PreviewView beritaId={slug} />
       </Suspense>
     </HydrationBoundary>
   );

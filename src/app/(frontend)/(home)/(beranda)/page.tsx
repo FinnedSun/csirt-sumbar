@@ -4,8 +4,9 @@ import { HydrateClient } from "@/trpc/server";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
-export default async function Home() {
+export const dynamic = "force-dynamic";
 
+export default async function Home() {
 
   return (
     <HydrateClient>

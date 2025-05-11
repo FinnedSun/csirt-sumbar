@@ -26,7 +26,8 @@ const run = async () => {
         email: superAdminEmail,
         password: superAdminPassword,
         roles: 'super_admin',
-      },
+        name: 'Super Admin'
+      }
     })
     console.log('Super admin berhasil dibuat!')
   } else {

@@ -4,9 +4,9 @@ import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
 
 interface Props {
-  params: {
+  params: Promise<{
     beritaId: string
-  }
+  }>
 }
 
 const BeritaSlug = async ({ params }: Props) => {

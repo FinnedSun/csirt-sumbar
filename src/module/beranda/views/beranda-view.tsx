@@ -40,35 +40,35 @@ const services = [
 
 
 
-const publications = [
-  {
-    title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
-    description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
-    href: "/lapor",
-    image: "/test6.jpg",
-    cover: "/test2.png",
-    date: new Date(2022, 4, 11),
-    author: "Admin"
-  },
-  {
-    title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
-    description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
-    href: "/lapor",
-    image: "/test5.jpg",
-    cover: "/test2.png",
-    date: new Date(2022, 4, 11),
-    author: "Admin"
-  },
-  {
-    title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
-    description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
-    href: "/lapor",
-    image: "/test6.jpg",
-    cover: "/test2.png",
-    date: new Date(2022, 4, 11),
-    author: "Admin"
-  },
-]
+// const publications = [
+//   {
+//     title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
+//     description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
+//     href: "/lapor",
+//     image: "/test6.jpg",
+//     cover: "/test2.png",
+//     date: new Date(2022, 4, 11),
+//     author: "Admin"
+//   },
+//   {
+//     title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
+//     description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
+//     href: "/lapor",
+//     image: "/test5.jpg",
+//     cover: "/test2.png",
+//     date: new Date(2022, 4, 11),
+//     author: "Admin"
+//   },
+//   {
+//     title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
+//     description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
+//     href: "/lapor",
+//     image: "/test6.jpg",
+//     cover: "/test2.png",
+//     date: new Date(2022, 4, 11),
+//     author: "Admin"
+//   },
+// ]
 
 
 export const BerandaView = () => {
@@ -84,7 +84,7 @@ export const BerandaView = () => {
         services={services}
       />
       <section>
-        <Publication publications={publications} />
+        <Publication />
       </section>
     </div>
   )
