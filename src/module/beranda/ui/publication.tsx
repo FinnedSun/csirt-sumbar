@@ -37,7 +37,6 @@ export const Publication = ({
     return <div>Error: {error.message}</div>
   }
 
-  // publication.date.toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })
   return (
     <div className="m-1 bg-transparent">
       <h2 className="text-2xl font-bold m-4">Publikasi Terbaru</h2>
