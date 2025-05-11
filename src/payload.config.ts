@@ -11,6 +11,9 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { News } from './collections/News';
 import { Protal } from './collections/Protal'
+import { Carousel } from './collections/Carousel';
+import { Event } from './collections/Event'
+import { Contact } from './collections/Contact'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,7 +28,15 @@ export default buildConfig({
       beforeNavLinks: ["@/components/SidebarNavButton#SidebarNavButton"], // Tambahkan di sini
     },
   },
-  collections: [Users, Media, News, Protal],
+  collections: [
+    Users,
+    Media,
+    News,
+    Protal,
+    Carousel,
+    Event,
+    Contact,
+  ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

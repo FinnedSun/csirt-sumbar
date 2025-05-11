@@ -22,6 +22,10 @@ export const Publication = () => {
     return <div>Error: {error.message}</div>
   }
 
+  if (data.pages?.[0]?.docs.length === 0) {
+    return null
+  }
+
   return (
     <div className="m-1 bg-transparent">
       <h2 className="text-2xl font-bold m-4">Publikasi Terbaru</h2>

@@ -4,6 +4,8 @@ import { CableIcon, CloudIcon, MonitorIcon } from "lucide-react"
 import { CarouselBeranda } from "../ui/components/carousel-beranda"
 import { Services } from "../ui/services"
 import { Publication } from "../ui/publication"
+import { useTRPC } from "@/trpc/client"
+import { useSuspenseInfiniteQuery, useSuspenseQueries, useSuspenseQuery } from "@tanstack/react-query"
 
 const carouselImages = [
   {
@@ -39,46 +41,14 @@ const services = [
 ]
 
 
-
-// const publications = [
-//   {
-//     title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
-//     description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
-//     href: "/lapor",
-//     image: "/test6.jpg",
-//     cover: "/test2.png",
-//     date: new Date(2022, 4, 11),
-//     author: "Admin"
-//   },
-//   {
-//     title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
-//     description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
-//     href: "/lapor",
-//     image: "/test5.jpg",
-//     cover: "/test2.png",
-//     date: new Date(2022, 4, 11),
-//     author: "Admin"
-//   },
-//   {
-//     title: "Pentingnya Pemahaman Teknologi Keamanan Siber",
-//     description: "Pentingnya Pemahaman Teknologi Keamanan Siber Pentingnya Pemahaman Teknologi Keamanan Siber, Pentingnya Pemahaman Teknologi Keamanan Siber",
-//     href: "/lapor",
-//     image: "/test6.jpg",
-//     cover: "/test2.png",
-//     date: new Date(2022, 4, 11),
-//     author: "Admin"
-//   },
-// ]
-
-
 export const BerandaView = () => {
 
-  // const [data] = trpc.beranda.getTitle.useSuspenseQuery();
+
 
   return (
     <div>
       <section>
-        <CarouselBeranda carouselImages={carouselImages} />
+        <CarouselBeranda />
       </section>
       <Services
         services={services}

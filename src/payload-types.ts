@@ -71,6 +71,9 @@ export interface Config {
     media: Media;
     news: News;
     protal: Protal;
+    carousel: Carousel;
+    event: Event;
+    contact: Contact;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -81,6 +84,9 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     protal: ProtalSelect<false> | ProtalSelect<true>;
+    carousel: CarouselSelect<false> | CarouselSelect<true>;
+    event: EventSelect<false> | EventSelect<true>;
+    contact: ContactSelect<false> | ContactSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -184,6 +190,10 @@ export interface News {
   status: 'draft' | 'published';
   publishedAt?: string | null;
   slug?: string | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -214,6 +224,53 @@ export interface Protal {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel".
+ */
+export interface Carousel {
+  id: string;
+  title: string;
+  image: string | Media;
+  link?: string | null;
+  order?: number | null;
+  active?: boolean | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event".
+ */
+export interface Event {
+  id: string;
+  acara: string;
+  tanggalAwal: string;
+  tanggalAkhir: string;
+  tempat: string;
+  materi?:
+    | {
+        pembicara?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  status: 'aktif' | 'tidak-aktif';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact".
+ */
+export interface Contact {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+  updatedAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -234,6 +291,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'protal';
         value: string | Protal;
+      } | null)
+    | ({
+        relationTo: 'carousel';
+        value: string | Carousel;
+      } | null)
+    | ({
+        relationTo: 'event';
+        value: string | Event;
+      } | null)
+    | ({
+        relationTo: 'contact';
+        value: string | Contact;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -326,6 +395,12 @@ export interface NewsSelect<T extends boolean = true> {
   status?: T;
   publishedAt?: T;
   slug?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }
@@ -338,6 +413,50 @@ export interface ProtalSelect<T extends boolean = true> {
   content?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "carousel_select".
+ */
+export interface CarouselSelect<T extends boolean = true> {
+  title?: T;
+  image?: T;
+  link?: T;
+  order?: T;
+  active?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "event_select".
+ */
+export interface EventSelect<T extends boolean = true> {
+  acara?: T;
+  tanggalAwal?: T;
+  tanggalAkhir?: T;
+  tempat?: T;
+  materi?:
+    | T
+    | {
+        pembicara?: T;
+        id?: T;
+      };
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact_select".
+ */
+export interface ContactSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  subject?: T;
+  message?: T;
+  createdAt?: T;
+  updatedAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -9,7 +9,7 @@ export const ProtalContent = ({
   children
 }: Props) => {
   return (
-    <section className="relative py-12 px-4 sm:px-8 md:px-16 bg-gradient-to-br from-blue-50 via-white to-orange-50 min-h-[60vh] ">
+    <section className="relative py-12 px-4 sm:px-8 md:px-16  min-h-[60vh] ">
       <div className="max-w-3xl mx-auto rounded-2xl shadow-xl bg-white/80 backdrop-blur-md border border-gray-200 p-8">
         <div className="flex items-center gap-4 mb-6">
           <div className="w-2 h-10 bg-gradient-to-b from-blue-500 to-orange-400 rounded-full" />
@@ -21,8 +21,6 @@ export const ProtalContent = ({
           {children}
         </div>
       </div>
-      <div className="absolute top-0 right-0 w-32 h-32 bg-orange-200 rounded-full opacity-30 blur-2xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-blue-200 rounded-full opacity-30 blur-2xl pointer-events-none" />
     </section>
   );
 };

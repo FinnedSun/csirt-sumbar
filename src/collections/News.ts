@@ -6,8 +6,9 @@ import type { CollectionConfig } from 'payload'
 export const News: CollectionConfig = {
   slug: 'news',
   admin: {
-    useAsTitle: 'title'
-  }, fields: [
+    useAsTitle: 'title',
+  },
+  fields: [
     {
       name: 'title',
       type: 'text',
@@ -75,6 +76,23 @@ export const News: CollectionConfig = {
       admin: {
         hidden: true,
       },
+    },
+    {
+      name: 'meta',
+      label: 'Meta',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          label: 'Judul',
+        },
+        {
+          name: 'description',
+          type: 'textarea',
+          label: 'Deskripsi',
+        },
+      ]
     }
 
   ],

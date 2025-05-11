@@ -48,7 +48,7 @@ export const Footer = ({
                 className="bg-blue-600 text-white px-4 py-2 rounded ml-2">
                 Subscribe
               </button>
-              +  </form>
+            </form>
           </div>
         </div>
         <p className="mt-4">© HAK CIPTA SUMBARPROV-CSIRT {new Date().getFullYear()}</p>
