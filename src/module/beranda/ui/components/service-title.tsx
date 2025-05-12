@@ -11,7 +11,7 @@ export const ServiceTitle = () => {
       {/* Image Section - Hidden on mobile */}
       <div className="hidden lg:block relative w-full aspect-video">
         <Image
-          src={"/test2.png"}
+          src={"/service-image.jpg"}
           alt="image"
           fill
           className="object-cover rounded-lg"

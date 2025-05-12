@@ -9,17 +9,17 @@ const services = [
   {
     icon: CableIcon,
     title: "Aduan Siber",
-    href: "/lapor",
+    href: "/aduan-siber",
   },
   {
     icon: MonitorIcon,
     title: "Panduan Teknis",
-    href: "/lapor",
+    href: "/lapor", //TODO
   },
   {
     icon: CloudIcon,
     title: "Asistensi Pembentukan CSIRT",
-    href: "/lapor",
+    href: "/lapor", //TOOD
   }
 ]
 

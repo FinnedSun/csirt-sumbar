@@ -246,6 +246,7 @@ export interface Event {
   materi?:
     | {
         pembicara?: string | null;
+        file?: (string | null) | Media;
         id?: string | null;
       }[]
     | null;
@@ -432,6 +433,7 @@ export interface EventSelect<T extends boolean = true> {
     | T
     | {
         pembicara?: T;
+        file?: T;
         id?: T;
       };
   status?: T;

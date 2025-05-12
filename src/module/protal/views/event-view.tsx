@@ -14,6 +14,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
 import { useTRPC } from '@/trpc/client';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { formatDate } from '@/lib/utils';
+import Link from 'next/link';
 
 
 
@@ -85,7 +86,21 @@ const EventView = () => {
                 <TableCell className="text-right max-w-[320px] whitespace-pre-line break-words">
                   <ul className="list-disc pl-4 space-y-1 text-left">
                     {event.materi?.map((m) => (
-                      <li key={m.id}>{m.pembicara}</li>
+                      <li key={m.id}>
+                        {m.file ? (
+                          <Link
+                            href={``}
+                            download={m.file}
+                            className='hover:underline'
+                          >
+                            {m.pembicara}
+                          </Link>
+
+                        ) : (
+                          <span>{m.pembicara}</span>
+                        )}
+
+                      </li>
                     ))}
                   </ul>
                 </TableCell>
@@ -105,7 +120,21 @@ const EventView = () => {
             <div className="text-sm"><span className="font-semibold">Materi:</span>
               <ul className="list-disc pl-5 mt-1">
                 {event.materi?.map((m) => (
-                  <li key={m.id}>{m.pembicara}</li>
+                  <li key={m.id}>
+                    {m.file ? (
+                      <Link
+                        href={``}
+                        download={m.file}
+                        className='underline'
+                      >
+                        {m.pembicara}
+                      </Link>
+
+                    ) : (
+                      <span>{m.pembicara}</span>
+                    )}
+
+                  </li>
                 ))}
               </ul>
             </div>

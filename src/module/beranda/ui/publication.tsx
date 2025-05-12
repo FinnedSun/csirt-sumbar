@@ -36,7 +36,7 @@ export const Publication = () => {
             <CardContent>
               <div className="relative w-full overflow-hidden rounded-xl aspect-video">
                 <Image
-                  src={berita?.image?.url || "/test1.png"}
+                  src={berita?.image?.url || "/bg-default.png"}
                   alt={berita.title}
                   fill
                   className="size-full object-cover "

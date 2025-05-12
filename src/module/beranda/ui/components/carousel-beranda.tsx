@@ -57,7 +57,7 @@ export const CarouselBeranda = ({
                   <Image
                     src={
                       carouselImage.image?.url ||
-                      '/test1.png'
+                      '/bg-default.png'
                     }
                     alt={
                       carouselImage.image?.alt ||

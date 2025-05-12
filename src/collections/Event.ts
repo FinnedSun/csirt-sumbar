@@ -55,7 +55,19 @@ export const Event: CollectionConfig = {
         {
           name: 'pembicara',
           type: 'text',
-          label: 'Pembicara & Materi',
+          label: 'Pembicara'
+        },
+        {
+          name: 'file',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'File Materi (PDF)',
+          required: false,
+          filterOptions: {
+            mimeType: {
+              equals: 'application/pdf',
+            }
+          }
         }
       ]
     },
