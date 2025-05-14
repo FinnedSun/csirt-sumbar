@@ -1,6 +1,8 @@
+import { ErrorPage } from "@/components/error-page";
+import { LoadingPage } from "@/components/loading-page";
 import { BerandaView } from "@/module/beranda/views/beranda-view";
-// import { trpc } from "@/trpc/server";
-import { getQueryClient, HydrateClient, trpc } from "@/trpc/server";
+import { getQueryClient, trpc } from "@/trpc/server";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -17,12 +19,12 @@ export default async function Home() {
   )
 
   return (
-    <HydrateClient>
-      <Suspense fallback={"Loading.."}>
-        <ErrorBoundary fallback={"Error.."}>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <Suspense fallback={<LoadingPage />}>
+        <ErrorBoundary fallback={<ErrorPage />}>
           <BerandaView />
         </ErrorBoundary>
       </Suspense>
-    </HydrateClient>
+    </HydrationBoundary>
   )
 }

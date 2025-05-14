@@ -14,6 +14,7 @@ import { Protal } from './collections/Protal'
 import { Carousel } from './collections/Carousel';
 import { Event } from './collections/Event'
 import { Contact } from './collections/Contact'
+import { Panduan } from './collections/Panduan'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -36,6 +37,7 @@ export default buildConfig({
     Carousel,
     Event,
     Contact,
+    Panduan,
   ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

@@ -1,7 +1,11 @@
 import { PreviewView } from "@/module/berita/views/preview-view";
-import { getQueryClient, trpc } from "@/trpc/server";
+import { caller, getQueryClient, trpc } from "@/trpc/server";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
+import { LoadingPage } from "@/components/loading-page";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorPage } from "@/components/error-page";
 
 interface Props {
   params: Promise<{
@@ -11,6 +15,13 @@ interface Props {
 
 export default async function Page({ params }: Props) {
   const { slug } = await params;
+
+  // Require authentication
+  const session = await caller.auth.session();
+  if (!session.user) {
+    redirect("/admin"); // or show a message
+  }
+
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery(
@@ -21,9 +32,11 @@ export default async function Page({ params }: Props) {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <Suspense fallback={<div>Memuat preview...</div>}>
-        <PreviewView beritaId={slug} />
+      <Suspense fallback={<LoadingPage />}>
+        <ErrorBoundary fallback={<ErrorPage />}>
+          <PreviewView beritaId={slug} />
+        </ErrorBoundary>
       </Suspense>
-    </HydrationBoundary>
+    </HydrationBoundary >
   );
 }

@@ -83,8 +83,8 @@ export const News: CollectionConfig = {
     beforeValidate: [
       ({ data, req }) => {
         if (data) {
-          // Slug otomatis dari judul
-          if (data.title && (!data.slug || data.slug === '')) {
+          // Slug otomatis dari judul (diupdate setiap kali judul berubah)
+          if (data.title) {
             data.slug = data.title
               .toLowerCase()
               .replace(/\s+/g, '-')

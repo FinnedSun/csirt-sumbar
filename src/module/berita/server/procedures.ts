@@ -25,20 +25,18 @@ export const newsRouter = createTRPCRouter({
         sort: "order",
       });
 
-      const doc = result.docs[0];
-
-      if (!doc) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Data carousel tidak ditemukan"
-        });
-      }
-
-      if (!result) {
-        throw new TRPCError({
-          code: "NOT_FOUND",
-          message: "Data carousel tidak ditemukan"
-        });
+      if (!result.docs.length) {
+        return {
+          docs: [],
+          totalDocs: 0,
+          totalPages: 0,
+          page: 1,
+          pagingCounter: 1,
+          hasPrevPage: false,
+          hasNextPage: false,
+          prevPage: null,
+          nextPage: null
+        };
       }
 
       return {
@@ -48,7 +46,6 @@ export const newsRouter = createTRPCRouter({
           image: doc.image as Media | null,
         }))
       };
-
     }),
   getMany: baseProcedure
     .input(
@@ -94,11 +91,15 @@ export const newsRouter = createTRPCRouter({
           slug: { equals: input.slug },
           status: { equals: 'published' }
         },
-        limit: 1
+        limit: 1,
+        depth: 1 // Add depth to populate relationships
       });
 
       const doc = result.docs[0];
-      if (!doc) throw new TRPCError({ code: 'NOT_FOUND' });
+      if (!doc) throw new TRPCError({
+        code: 'NOT_FOUND',
+        message: 'Berita tidak ditemukan atau belum dipublikasikan'
+      });
 
       return { ...doc, image: doc.image as Media | null };
     }),
