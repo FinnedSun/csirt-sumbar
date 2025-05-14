@@ -14,12 +14,12 @@ const services = [
   {
     icon: MonitorIcon,
     title: "Panduan Teknis",
-    href: "/lapor", //TODO
+    href: "/panduan",
   },
   {
     icon: CloudIcon,
     title: "Asistensi Pembentukan CSIRT",
-    href: "/lapor", //TOOD
+    href: "/asisten",
   }
 ]
 

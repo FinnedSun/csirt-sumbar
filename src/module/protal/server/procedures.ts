@@ -56,4 +56,12 @@ export const protalRouter = createTRPCRouter({
       });
       return result;
     }),
+  getPanduan: baseProcedure
+    .query(async ({ ctx }) => {
+      const result = await ctx.db.find({
+        collection: "panduan",
+        sort: "-createdAt"
+      });
+      return result?.docs || [];
+    }),
 });

@@ -56,7 +56,7 @@ export const ContactContent = () => {
           <div className="w-full md:w-1/2 rounded-lg overflow-hidden shadow">
             <iframe
               title="Dinas Komunikasi dan Informatika"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63359.24678558557!2d107.560754!3d-6.903449!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7d1b6e6e6e1%3A0x7e6e6e6e6e6e6e6e!2sDinas%20Komunikasi%20dan%20Informatika!5e0!3m2!1sid!2sid!4v1680000000000!5m2!1sid!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d981.4903075439362!2d100.35669060396299!3d-0.9160078321973676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1747183914972!5m2!1sid!2sid"
               width="100%"
               height="350"
               style={{ border: 0 }}

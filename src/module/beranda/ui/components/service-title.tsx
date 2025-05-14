@@ -28,7 +28,7 @@ export const ServiceTitle = () => {
           Guna kemudahan dalam penanganan siber, silahkan laporkan pada link dibawah ini.
         </p>
         <Button asChild className="w-fit" variant={"outline"}>
-          <Link href={"/lapor"}>Lihat Semua</Link>
+          <Link href={"/aduan-siber"}>Lihat Semua</Link>
         </Button>
       </div>
     </div>

@@ -16,19 +16,12 @@ interface Props {
 
 const BeritaSlugView = ({ beritaId }: Props) => {
   const trpc = useTRPC();
-  const router = useRouter()
-  const { data, error } = useSuspenseQuery(trpc.berita.getOnePublik.queryOptions({
+  const { data } = useSuspenseQuery(trpc.berita.getOnePublik.queryOptions({
     slug: beritaId
   }))
 
-  useEffect(() => {
-    if (error?.data?.code === 'UNAUTHORIZED') {
-      toast.error(error.message)
-      router.push('/berita')
-    }
-  }, [error, router])
 
-  if (error) return null
+
 
   return (
     <div className="container mx-auto max-w-4xl py-8 px-4">

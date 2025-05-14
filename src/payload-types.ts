@@ -74,6 +74,7 @@ export interface Config {
     carousel: Carousel;
     event: Event;
     contact: Contact;
+    panduan: Panduan;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -87,6 +88,7 @@ export interface Config {
     carousel: CarouselSelect<false> | CarouselSelect<true>;
     event: EventSelect<false> | EventSelect<true>;
     contact: ContactSelect<false> | ContactSelect<true>;
+    panduan: PanduanSelect<false> | PanduanSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -269,6 +271,21 @@ export interface Contact {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "panduan".
+ */
+export interface Panduan {
+  id: string;
+  title: string;
+  file: string | Media;
+  /**
+   * Otomatis terisi saat upload file
+   */
+  fileSize?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -301,6 +318,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'contact';
         value: string | Contact;
+      } | null)
+    | ({
+        relationTo: 'panduan';
+        value: string | Panduan;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -451,6 +472,17 @@ export interface ContactSelect<T extends boolean = true> {
   message?: T;
   createdAt?: T;
   updatedAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "panduan_select".
+ */
+export interface PanduanSelect<T extends boolean = true> {
+  title?: T;
+  file?: T;
+  fileSize?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
