@@ -62,6 +62,12 @@ export const protalRouter = createTRPCRouter({
         collection: "panduan",
         sort: "-createdAt"
       });
-      return result?.docs || [];
+      return {
+        ...result,
+        docs: result.docs.map((doc) => ({
+          ...doc,
+          createdAt: doc.createdAt,
+        }))
+      };
     }),
 });

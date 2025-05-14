@@ -11,7 +11,7 @@ import {
   TableHeader,
   TableRow
 } from '@/components/ui/table'
-import Link from "next/link";
+
 
 const PanduanView = () => {
   const trpc = useTRPC();
@@ -19,7 +19,7 @@ const PanduanView = () => {
 
   return (
     <EventContent title="Panduan / Pedoman">
-      {panduanList.length === 0 ? (
+      {panduanList.docs.length === 0 ? (
         <div className="text-center text-gray-500 py-12">
           Belum ada panduan yang tersedia.
         </div>
@@ -35,19 +35,17 @@ const PanduanView = () => {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {panduanList.map((panduan: any) => (
+                {panduanList.docs.map((panduan) => (
                   <TableRow key={panduan.id} className="even:bg-gray-50 odd:bg-white hover:bg-orange-50 transition">
                     <TableCell className="font-semibold px-2 py-2 break-words max-w-xs">
-                      {panduan.file && panduan.file.url ? (
-                        <Link
-                          href={panduan.file.url}
+                      {panduan.file && typeof panduan.file === "object" && "url" in panduan.file ? (
+                        <a
+                          href={panduan.file.url?.toString()}
                           download={panduan.file.filename || "panduan.pdf"}
+                          className="text-xl hover:underline font-medium"
                         >
-                          <h1 className="text-xl hover:underline font-medium">
-
-                            {panduan.title}
-                          </h1>
-                        </Link>
+                          {panduan.title}
+                        </a>
                       ) : (
                         <span className="text-gray-400">{panduan.title}</span>
                       )}
@@ -62,19 +60,17 @@ const PanduanView = () => {
           </div>
           {/* Card untuk mobile */}
           <div className="block md:hidden space-y-4">
-            {panduanList.map((panduan: any) => (
+            {panduanList.docs.map((panduan) => (
               <div key={panduan.id} className="bg-white rounded-lg shadow p-4 flex flex-col">
                 <div className="font-semibold text-base mb-2">
-                  {panduan.file && panduan.file.url ? (
-                    <Link
-                      href={panduan.file.url}
+                  {panduan.file && typeof panduan.file === "object" && "url" in panduan.file ? (
+                    <a
+                      href={panduan.file.url?.toString()}
                       download={panduan.file.filename || "panduan.pdf"}
+                      className="text-xl hover:underline font-medium"
                     >
-                      <h1 className="text-xl hover:underline font-medium">
-
-                        {panduan.title}
-                      </h1>
-                    </Link>
+                      {panduan.title}
+                    </a>
                   ) : (
                     <span className="text-gray-400">{panduan.title}</span>
                   )}
