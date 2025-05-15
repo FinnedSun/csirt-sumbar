@@ -43,7 +43,7 @@ export const Publication = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <CardTitle className="text-2xl font-bold">{berita.title}</CardTitle>
+                <CardTitle className="text-2xl font-bold line-clamp-3">{berita.title}</CardTitle>
                 <p className="text-sm text-gray-500">
                   {berita.publishedAt ?
                     new Date(berita.publishedAt).toLocaleDateString('id-ID', {
