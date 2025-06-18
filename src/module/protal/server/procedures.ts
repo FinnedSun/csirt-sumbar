@@ -2,7 +2,7 @@ import { createTRPCRouter, baseProcedure } from "@/trpc/init";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
 
-export const protalRouter = createTRPCRouter({
+export const portalRouter = createTRPCRouter({
   getByTitle: baseProcedure
     .input(z.object({ title: z.string() }))
     .query(async ({ input, ctx }) => {

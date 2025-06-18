@@ -1,4 +1,4 @@
 import { AppRouter } from "@/trpc/routers/_app";
 import { inferRouterOutputs } from "@trpc/server";
 
-export type PanduanGetManyOutput = inferRouterOutputs<AppRouter>["protal"]["getPanduan"];
+export type PanduanGetManyOutput = inferRouterOutputs<AppRouter>["portal"]["getPanduan"];

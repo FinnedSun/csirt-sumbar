@@ -7,7 +7,7 @@ import React from 'react'
 const ProfilePage = () => {
 
   const queryClient = getQueryClient();
-  void queryClient.prefetchQuery(trpc.protal.getByTitle.queryOptions({
+  void queryClient.prefetchQuery(trpc.portal.getByTitle.queryOptions({
     title: "Aduan Siber"
   }));
 

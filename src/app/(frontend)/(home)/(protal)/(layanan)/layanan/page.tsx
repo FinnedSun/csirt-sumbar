@@ -1,4 +1,4 @@
-import LayananView from '@/module/protal/views/layanan-view'
+import LayananView from '@/module/protal/views/layanan-view';
 import { getQueryClient, trpc } from '@/trpc/server';
 import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 import React from 'react'
@@ -6,7 +6,7 @@ import React from 'react'
 const ProfilePage = () => {
 
   const queryClient = getQueryClient();
-  void queryClient.prefetchQuery(trpc.protal.getByTitle.queryOptions({
+  void queryClient.prefetchQuery(trpc.portal.getByTitle.queryOptions({
     title: "Layanan"
   }));
 
