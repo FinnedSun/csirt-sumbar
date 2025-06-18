@@ -24,7 +24,7 @@ const schema = z.object({
 export const ContactContent = () => {
   const trpc = useTRPC()
 
-  const contact = useMutation(trpc.protal.createContact.mutationOptions({
+  const contact = useMutation(trpc.portal.createContact.mutationOptions({
     onSuccess: () => {
       toast.success("Berhasil mengirim pesan")
     },

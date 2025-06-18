@@ -21,7 +21,7 @@ import Link from 'next/link';
 const EventView = () => {
   const trpc = useTRPC()
 
-  const { data: events } = useSuspenseQuery(trpc.protal.getEvents.queryOptions())
+  const { data: events } = useSuspenseQuery(trpc.portal.getEvents.queryOptions())
 
   return (
     <EventContent

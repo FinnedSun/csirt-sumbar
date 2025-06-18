@@ -4,7 +4,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const ProtalContent = ({
+export const PortalContent = ({
   title,
   children
 }: Props) => {

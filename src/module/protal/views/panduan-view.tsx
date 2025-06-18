@@ -15,7 +15,7 @@ import {
 
 const PanduanView = () => {
   const trpc = useTRPC();
-  const { data: panduanList } = useSuspenseQuery(trpc.protal.getPanduan.queryOptions());
+  const { data: panduanList } = useSuspenseQuery(trpc.portal.getPanduan.queryOptions());
 
   return (
     <EventContent title="Panduan / Pedoman">

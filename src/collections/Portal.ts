@@ -1,7 +1,7 @@
 import { isSuperAdmin } from '@/lib/access'
 import type { CollectionConfig } from 'payload'
 
-export const Protal: CollectionConfig = {
+export const Portal: CollectionConfig = {
   slug: 'protal',
   admin: {
     useAsTitle: 'title',

@@ -6,7 +6,7 @@ import React from 'react'
 const PanduanPage = () => {
   const queryClient = getQueryClient();
 
-  void queryClient.prefetchQuery(trpc.protal.getPanduan.queryOptions());
+  void queryClient.prefetchQuery(trpc.portal.getPanduan.queryOptions());
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

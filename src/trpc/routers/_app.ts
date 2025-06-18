@@ -1,12 +1,13 @@
 import { newsRouter } from '@/module/berita/server/procedures';
 import { createTRPCRouter } from '../init';
-import { protalRouter } from '@/module/protal/server/procedures';
+
 import { authRouter } from '@/module/auth/server/procedures';
+import { portalRouter } from '@/module/protal/server/procedures';
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
   berita: newsRouter,
-  protal: protalRouter,
+  portal: portalRouter,
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;
